@@ -1,4 +1,7 @@
 {
   "name": "SignLinguaV3",
-  "displayName": "SignLinguaV3"
+  "displayName": "Sign Lingua",
+  "webAppBaseUrl": "https://navajowhite-porpoise-541325.hostingersite.com/scan.php",
+  "trainDataModelID": "pm2SITMZ3j",
+  "suggestionsApiUrl": "https://api.datamuse.com/sug"
 }

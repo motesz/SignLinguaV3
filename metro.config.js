@@ -1,11 +1,17 @@
 const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
 
-/**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('metro-config').MetroConfig}
- */
-const config = {};
+module.exports = function (baseConfig) {
+  const defaultConfig = mergeConfig(baseConfig, getDefaultConfig(__dirname));
+  const {resolver: {assetExts, sourceExts}} = defaultConfig;
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+  return mergeConfig(
+    defaultConfig,
+    {
+      resolver: {
+        assetExts: [...assetExts.filter(ext => ext !== 'svg'), 'tflite'],
+        // assetExts: [assetExts, 'tflite'],
+        sourceExts: [...sourceExts, 'svg'],
+      },
+    },
+  );
+};
